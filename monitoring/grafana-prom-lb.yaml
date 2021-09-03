@@ -1,0 +1,22 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: prometheus-service-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app: prometheus
+    component: server
+  ports:
+  - port: 9090
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: grafana-service-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: grafana
+  ports:
+  - port: 3000
