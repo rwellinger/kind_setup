@@ -14,8 +14,8 @@ grafana:
       - secretName: thwelly-net-wildcard-tls
         hosts:
           - cloud.thwelly.net
-
     path: /grafana/?(.*)
-  grafana.ini:
-    server:
-      root_url: https://cloud.thwelly.net/grafana/
+
+grafana.ini:
+  server:
+    root_url: https://cloud.thwelly.net/grafana/
