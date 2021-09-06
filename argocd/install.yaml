@@ -3324,6 +3324,8 @@ spec:
       containers:
       - command:
         - argocd-server
+        - --rootpath
+        - /argo-cd
         env:
         - name: ARGOCD_SERVER_INSECURE
           valueFrom:

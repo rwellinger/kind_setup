@@ -1,5 +1,5 @@
 NAME: grafana
-LAST DEPLOYED: Thu Aug 19 22:07:30 2021
+LAST DEPLOYED: Mon Sep  6 12:26:45 2021
 NAMESPACE: monitoring
 STATUS: deployed
 REVISION: 1
@@ -22,3 +22,4 @@ NOTES:
 ######   WARNING: Persistence is disabled!!! You will lose your data when   #####
 ######            the Grafana pod is terminated.                            #####
 #################################################################################
+

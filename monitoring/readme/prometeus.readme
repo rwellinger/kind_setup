@@ -1,5 +1,5 @@
 NAME: prometheus
-LAST DEPLOYED: Thu Aug 19 22:06:07 2021
+LAST DEPLOYED: Mon Sep  6 12:15:25 2021
 NAMESPACE: monitoring
 STATUS: deployed
 REVISION: 1
@@ -39,3 +39,4 @@ Get the PushGateway URL by running these commands in the same shell:
 
 For more information on running Prometheus, visit:
 https://prometheus.io/
+
