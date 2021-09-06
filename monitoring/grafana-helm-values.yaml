@@ -19,8 +19,3 @@ grafana:
   grafana.ini:
     server:
       root_url: https://cloud.thwelly.net/grafana/
-
-
-grafana.ini:
-  server:
-    root_url: http://localhost:3000/grafana/
