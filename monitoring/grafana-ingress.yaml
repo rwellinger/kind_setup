@@ -10,21 +10,20 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     # If you encounter a redirect loop or are getting a 307 response code 
     # then you need to force the nginx ingress to connect to the backend using HTTPS.
-    #
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-  - host: cloud.thwelly.net
-    http:
-      paths:
-      - path: /grafana
-        pathType: Prefix
-        backend:
-          service: 
-            name: grafana
-            port:
-              name: https
+    - host: cloud.thwelly.net
+      http:
+        paths:
+          - path: /grafana/
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana
+                port:
+                  name: https
   tls:
-  - hosts:
-    - cloud.thwelly.net
-    secretName: thwelly-net-wildcard-tls
+    - hosts:
+        - cloud.thwelly.net
+      secretName: thwelly-net-wildcard-tls

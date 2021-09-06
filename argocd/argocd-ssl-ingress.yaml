@@ -14,17 +14,17 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-  - host: argocd.thwelly.net
-    http:
-      paths:
-      - path: /argo-cd
-        pathType: Prefix
-        backend:
-          service: 
-            name: argocd-server
-            port:
-              name: https
+    - host: argocd.thwelly.net
+      http:
+        paths:
+          - path: /argo-cd
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: https
   tls:
-  - hosts:
-    - argocd.thwelly.net
-    secretName: thwelly-net-wildcard-tls
+    - hosts:
+        - argocd.thwelly.net
+      secretName: thwelly-net-wildcard-tls
