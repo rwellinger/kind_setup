@@ -1,0 +1,167 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2021-09-07T10:48:57Z"
+  generation: 290
+  name: flylog-server-app
+  namespace: argocd
+  resourceVersion: "377590"
+  uid: bb9b766d-66b5-4f14-89a9-e1114864c5d3
+spec:
+  destination:
+    namespace: flylog-book
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: flylog/overlays/wellynet/server
+    repoURL: git@github.com:rwellinger/kubernetes-playground.git
+    targetRevision: HEAD
+status:
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2021-09-07T10:49:13Z"
+    deployedAt: "2021-09-07T10:49:14Z"
+    id: 0
+    revision: 51313a406b9c236c302fadcf09c80fccc5031dff
+    source:
+      path: flylog/overlays/wellynet/server
+      repoURL: git@github.com:rwellinger/kubernetes-playground.git
+      targetRevision: HEAD
+  - deployStartedAt: "2021-09-07T10:57:37Z"
+    deployedAt: "2021-09-07T10:57:38Z"
+    id: 1
+    revision: 38e62bd6f7abdcb65e0fb195197c5f32331efd1f
+    source:
+      path: flylog/overlays/wellynet/server
+      repoURL: git@github.com:rwellinger/kubernetes-playground.git
+      targetRevision: HEAD
+  - deployStartedAt: "2021-09-07T11:02:24Z"
+    deployedAt: "2021-09-07T11:02:24Z"
+    id: 2
+    revision: f331e55e61842c506df9ba6b2c7f5317c9a3a1a9
+    source:
+      path: flylog/overlays/wellynet/server
+      repoURL: git@github.com:rwellinger/kubernetes-playground.git
+      targetRevision: HEAD
+  - deployStartedAt: "2021-09-07T11:55:49Z"
+    deployedAt: "2021-09-07T11:55:50Z"
+    id: 3
+    revision: 006fb9c52df15b6ebc86fd9e19bfc158542d5076
+    source:
+      path: flylog/overlays/wellynet/server
+      repoURL: git@github.com:rwellinger/kubernetes-playground.git
+      targetRevision: HEAD
+  - deployStartedAt: "2021-09-07T17:21:48Z"
+    deployedAt: "2021-09-07T17:21:49Z"
+    id: 4
+    revision: c1d833588d106972322cd1346aa6c17ba57c023a
+    source:
+      path: flylog/overlays/wellynet/server
+      repoURL: git@github.com:rwellinger/kubernetes-playground.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2021-09-07T17:21:49Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: c1d833588d106972322cd1346aa6c17ba57c023a
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2021-09-07T17:21:48Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/flylogsrv-service-nodeport unchanged
+        name: flylogsrv-service-nodeport
+        namespace: flylog-book
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/flylog-srv-svc unchanged
+        name: flylog-srv-svc
+        namespace: flylog-book
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/flylogsrv-deployment unchanged
+        name: flylogsrv-deployment
+        namespace: flylog-book
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/flylog-server-svc-ingress configured
+        name: flylog-server-svc-ingress
+        namespace: flylog-book
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: c1d833588d106972322cd1346aa6c17ba57c023a
+      source:
+        path: flylog/overlays/wellynet/server
+        repoURL: git@github.com:rwellinger/kubernetes-playground.git
+        targetRevision: HEAD
+  reconciledAt: "2021-09-07T22:13:51Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: Service
+    name: flylog-srv-svc
+    namespace: flylog-book
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: flylogsrv-service-nodeport
+    namespace: flylog-book
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: flylogsrv-deployment
+    namespace: flylog-book
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: flylog-server-svc-ingress
+    namespace: flylog-book
+    status: Synced
+    version: v1
+  sourceType: Kustomize
+  summary:
+    externalURLs:
+    - https://flylog.thwelly.net/flylogsrv
+    images:
+    - thwelly/flylogsrv:v5.0.0.0-AMD64
+  sync:
+    comparedTo:
+      destination:
+        namespace: flylog-book
+        server: https://kubernetes.default.svc
+      source:
+        path: flylog/overlays/wellynet/server
+        repoURL: git@github.com:rwellinger/kubernetes-playground.git
+        targetRevision: HEAD
+    revision: 9575e8b40abba17406bcb287cc8c2a2db28e6c17
+    status: Synced
