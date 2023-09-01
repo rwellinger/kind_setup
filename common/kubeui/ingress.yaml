@@ -8,7 +8,7 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   rules:
-    - host: kube-dash.info
+    - host: kube-dash.local.thwelly.org
       http:
         paths:
           - path: /
@@ -20,5 +20,5 @@ spec:
                   number: 443
   tls:
     - hosts:
-        - kube-dash.info
+        - kube-dash.local.thwelly.org
       secretName: mkcert

@@ -18,8 +18,8 @@ spec:
             name: argocd-server
             port:
               name: https
-    host: argocd.info
+    host: argocd.local.thwelly.org
   tls:
   - hosts:
-    - argocd.info
+    - argocd.local.thwelly.org
     secretName: mkcert 
