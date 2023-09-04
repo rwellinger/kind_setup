@@ -22,4 +22,4 @@ spec:
   tls:
   - hosts:
     - argocd.local.thwelly.org
-    secretName: mkcert 
+    secretName: argo-local-thwellyorg-crt

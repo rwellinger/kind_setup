@@ -23,7 +23,7 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 name: thwellydsrv-cluster
 networking:
-  apiServerAddress: 10.211.55.9
+  apiServerAddress: 10.211.55.4
   apiServerPort: 8443
 nodes:
 - role: control-plane

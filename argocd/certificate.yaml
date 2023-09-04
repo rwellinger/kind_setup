@@ -1,0 +1,78 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: my-ca-issuer
+  namespace: argocd
+spec:
+  ca:
+    secretName: root-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: my-selfsigned-ca
+  namespace: argocd
+spec:
+  isCA: true
+  commonName: my-selfsigned-ca
+  secretName: root-secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: selfsigned-cluster-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: thwellyorg-crt
+  namespace: argocd
+spec:
+  secretName: tls-secret
+  duration: 170000h
+  renewBefore: 72h
+  issuerRef:
+    kind: Issuer
+    name: my-ca-issuer
+  commonName: "thwelly.org"
+  isCA: true
+  dnsNames:
+  - "thwelly.org"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: local-thwellyorg-crt
+  namespace: argocd
+spec:
+  secretName: tls-secret
+  duration: 170000h
+  renewBefore: 72h
+  issuerRef:
+    kind: Issuer
+    name: my-ca-issuer
+  commonName: "local.thwelly.org"
+  isCA: false
+  dnsNames:
+  - "local.thwelly.org"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argo-local-thwellyorg-crt
+  namespace: argocd
+spec:
+  secretName: tls-secret
+  duration: 170000h
+  renewBefore: 72h
+  issuerRef:
+    kind: Issuer
+    name: my-ca-issuer
+  commonName: "argo.local.thwelly.org"
+  isCA: false
+  dnsNames:
+  - "argo.local.thwelly.org"
+
