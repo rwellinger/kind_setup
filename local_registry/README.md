@@ -32,3 +32,23 @@ Please note, that connect to this repository is only possible over SSL. But beca
     podman login https://<servername>:5000 --tls-verify=false
 
 Please note that this you also need to keep in Mind for "podman push" or else. Always when you connect to the server. Therfore it is not required for "tag" for example.
+
+# Use registry together with kind
+
+## Command to create registry with docker:
+
+
+    docker run --name kind-registry \
+    -p 5001:5000 \
+    -v /var/registry/data:/var/lib/registry:z \
+    -v /var/registry/auth:/auth:z \
+    -e "REGISTRY_AUTH=htpasswd" \
+    -e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+    -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
+    -v /var/registry/certs:/certs:z \
+    -e "REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt" \
+    -e "REGISTRY_HTTP_TLS_KEY=/certs/domain.key" \
+    -e REGISTRY_COMPATIBILITY_SCHEMA1_ENABLED=true \
+    -d \
+    docker.io/library/registry:2
+
