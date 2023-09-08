@@ -8,12 +8,6 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
-        "target": {
-          "limit": 100,
-          "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
-        },
         "type": "dashboard"
       }
     ]
@@ -22,8 +16,8 @@
   "editable": true,
   "gnetId": 13770,
   "graphTooltip": 0,
-  "id": 7,
-  "iteration": 1630833915528,
+  "id": 12,
+  "iteration": 1627466537583,
   "links": [],
   "panels": [
     {
@@ -66,7 +60,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 8,
+        "w": 9,
         "x": 0,
         "y": 1
       },
@@ -86,7 +80,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "exemplar": true,
@@ -293,8 +287,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 16,
-        "x": 8,
+        "w": 15,
+        "x": 9,
         "y": 1
       },
       "id": 64,
@@ -330,7 +324,7 @@
           }
         ]
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "kube_node_info",
@@ -489,7 +483,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 2,
+        "w": 3,
         "x": 0,
         "y": 4
       },
@@ -517,7 +511,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": " count(kube_namespace_created)",
@@ -570,7 +564,7 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 2,
+        "x": 3,
         "y": 4
       },
       "id": 159,
@@ -597,7 +591,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": " count(count by (pod)(container_spec_memory_reservation_limit_bytes{pod!=\"\"}))",
@@ -650,7 +644,7 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 5,
+        "x": 6,
         "y": 4
       },
       "id": 160,
@@ -677,7 +671,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "count(kube_persistentvolumeclaim_info) ",
@@ -753,7 +747,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -862,7 +856,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -961,7 +955,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 10,
       "points": false,
       "renderer": "flot",
@@ -1071,7 +1065,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1191,7 +1185,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "sum by (instance) (irate(node_cpu_seconds_total{mode!~\"guest.*|idle|iowait\", kubernetes_node=\"$node\"}[5m]))",
@@ -1254,11 +1248,10 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "(node_memory_MemTotal_bytes{kubernetes_node=\"flylog-cluster-control-plane\"}-node_memory_MemAvailable_bytes{kubernetes_node=\"flylog-cluster-control-plane\"})/node_memory_MemTotal_bytes{kubernetes_node=\"flylog-cluster-control-plane\"}",
+          "expr": "(node_memory_MemTotal_bytes{kubernetes_node=\"m-k8s\"}-node_memory_MemAvailable_bytes{kubernetes_node=\"m-k8s\"})/node_memory_MemTotal_bytes{kubernetes_node=\"m-k8s\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1319,7 +1312,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "sum(node_filesystem_size_bytes{kubernetes_node=\"$node\"} - node_filesystem_avail_bytes{kubernetes_node=\"$node\"}) by (kubernetes_node) / sum(node_filesystem_size_bytes{kubernetes_node=\"$node\"}) by (kubernetes_node)",
@@ -1345,20 +1338,23 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          },
-          "unit": "decbytes"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
+        "h": 3,
         "w": 2,
         "x": 9,
         "y": 17
       },
-      "id": 143,
+      "id": 141,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -1366,7 +1362,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "last"
+            "mean"
           ],
           "fields": "",
           "values": false
@@ -1374,10 +1370,10 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
-          "expr": "machine_memory_bytes{instance=\"$node\"}",
+          "expr": "kube_node_status_allocatable_cpu_cores{node=\"$node\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -1386,7 +1382,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Memory Total",
+      "title": "CPU Total",
       "type": "stat"
     },
     {
@@ -1427,7 +1423,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1547,7 +1543,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1623,6 +1619,61 @@
       }
     },
     {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 2,
+        "x": 9,
+        "y": 20
+      },
+      "id": 143,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.0.5",
+      "targets": [
+        {
+          "expr": "machine_memory_bytes{instance=\"$node\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory Total",
+      "type": "stat"
+    },
+    {
       "collapsed": false,
       "datasource": "Prometheus",
       "gridPos": {
@@ -1678,7 +1729,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "time()-kube_pod_start_time{pod=\"$pod\"}",
@@ -1748,7 +1799,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "sum(kube_pod_container_status_waiting_reason{pod=\"$pod\", reason!~\"ContainerCreating\"})",
@@ -1810,7 +1861,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "sum(round(increase(kube_pod_container_status_restarts_total{pod=\"$pod\"}[10m])))",
@@ -1920,7 +1971,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "targets": [
         {
           "expr": "sum(container_memory_usage_bytes{pod=\"$pod\"})",
@@ -1987,7 +2038,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 10,
       "points": false,
       "renderer": "flot",
@@ -2106,7 +2157,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 10,
       "points": false,
       "renderer": "flot",
@@ -2223,7 +2274,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.0",
+      "pluginVersion": "8.0.5",
       "pointradius": 0.5,
       "points": false,
       "renderer": "flot",
@@ -2299,7 +2350,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [
@@ -2312,8 +2363,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "flylog-cluster-control-plane",
-          "value": "flylog-cluster-control-plane"
+          "text": "minikube",
+          "value": "minikube"
         },
         "datasource": "Prometheus",
         "definition": "label_values(node_uname_info,kubernetes_node)",
@@ -2389,8 +2440,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "172.18.0.2:9100",
-          "value": "172.18.0.2:9100"
+          "text": "192.168.49.2:9100",
+          "value": "192.168.49.2:9100"
         },
         "datasource": "Prometheus",
         "definition": "query_result(node_uname_info{kubernetes_node=\"$node\"})",
@@ -2419,8 +2470,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "flylog-book",
-          "value": "flylog-book"
+          "text": "ingress-nginx",
+          "value": "ingress-nginx"
         },
         "datasource": "Prometheus",
         "definition": "label_values(kube_pod_labels, namespace)",
@@ -2449,8 +2500,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "flylogsrv-deployment-58845cc7c4-tl7v5",
-          "value": "flylogsrv-deployment-58845cc7c4-tl7v5"
+          "text": "ingress-nginx-controller-59b45fb494-jlwc6",
+          "value": "ingress-nginx-controller-59b45fb494-jlwc6"
         },
         "datasource": "Prometheus",
         "definition": "label_values(kube_pod_info{namespace=\"$namespace\"},  pod)",
@@ -2495,7 +2546,7 @@
     ]
   },
   "timezone": "",
-  "title": "01  Overview",
-  "uid": "Mnbt5C47k",
+  "title": "01 Minikube Overview",
+  "uid": "mfligQWnk",
   "version": 7
 }
