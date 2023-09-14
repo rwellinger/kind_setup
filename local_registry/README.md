@@ -33,7 +33,7 @@ Please note, that connect to this repository is only possible over SSL. But beca
 
 Please note that this you also need to keep in Mind for "podman push" or else. Always when you connect to the server. Therfore it is not required for "tag" for example.
 
-# Use registry together with kind
+# Use registry together with kind and docker
 
 ## Command to create registry with docker:
 
